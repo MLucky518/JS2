@@ -245,7 +245,7 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+  /* CODE HERE *
 }
 
 /**
