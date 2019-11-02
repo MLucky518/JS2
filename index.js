@@ -48,8 +48,8 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list,callback) {
+  return callback(list.length);
 }
 
 /**
@@ -66,8 +66,8 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList,callback) {
+  return callback(stringList[stringList.length-1]);
 }
 
 /**
@@ -87,8 +87,20 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList,callback) {
+
+let sum = 0;
+
+/*for(let i = 0;i<numberList.length;i++){
+  sum += numberList[i];           // alternate way
+}
+*/
+numberList.forEach(function(number){
+  sum += number;
+});
+
+return callback(sum);
+
 }
 
 /**
@@ -109,8 +121,8 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1,num2,callback) {
+  return callback(num1*num2);
 }
 
 /**
@@ -133,8 +145,16 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item,list,callback) {
+  let flag = false;
+
+for(let i=0;i<list.length;i++){
+  if(list[i] === item){
+    flag = true;
+  }
+}
+return callback(flag);
+
 }
 
 /**
@@ -178,8 +198,15 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+ let fullNames = [];
+
+ runners.forEach(element => {
+   let name = element.last_name + ", " + element.first_name;
+   fullNames.push(name);
+   
+ });
+ return fullNames;
 }
 
 /**
@@ -194,9 +221,15 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+ 
+  const newArray = runners.map(name => name.toUpperCase());
+  
+  return newArray;
+   
 }
+
+
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
