@@ -176,8 +176,10 @@ return callback(flag);
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list,callback) {
+  let newArray = list.filter((item,itemIndex) => list.indexOf(item) === itemIndex
+    );
+  return callback(newArray);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -223,7 +225,7 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
  
-  const newArray = runners.map(name => name.toUpperCase());
+  const newArray = runners.map(name => name.first_name.toUpperCase());
   
   return newArray;
    
@@ -244,8 +246,11 @@ function firstNamesAllCaps(runners) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE *
+function getRunnersByTShirtSize(runners,tShirtSize) {
+
+  const filtered = runners.filter(person => person.shirt_size === tShirtSize);
+
+  return filtered;
 }
 
 /**
@@ -258,9 +263,22 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+ let newArray = [];
+
+ runners.forEach(element => {newArray.push(element.donation);
+   
+ });
+
+ const number = newArray.reduce((a,b) => a+b ,0);
+ return number;
+
+  
+   
 }
+
+
+
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
@@ -282,7 +300,7 @@ function counterMaker() {
   // BROKEN CODE STARTS
   const count = 0;
   function counter() {
-    ++count
+    
   }
   // BROKEN CODE ENDS
 }
